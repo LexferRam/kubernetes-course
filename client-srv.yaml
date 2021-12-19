@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: client-srv
+spec:
+  type: NodePort
+  #selector permite interactuar con uno de nuestros recursos, mediante el label definido en el pod
+  selector:
+    app: client
+  ports:
+    - port: 3000
+      targetPort: 3000 # este es el port expuesto dentro del contenedor del pod(port donde levanta la app)
+      nodePort: 30007
+      # rango de nodePort 30000-32767

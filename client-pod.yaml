@@ -1,0 +1,20 @@
+apiVersion: v1
+# apiVersion: carpetas que contienen cierto tipo de recursos
+# v1 => Pod, Service, Secret
+# apps/v1 => Deplloyment
+# which apiVersion should I use?/ buscar apiVersion para cierto recurso
+
+kind: Pod # tipo de recurso queremos crear
+
+#metadata es el nombre del label que le damos al recurso
+metadata:
+  name: client-pod
+  #labels nombre que le damos al pods para que otros recursos puedan interactuar con el(en este caso es el nombre del pod creado)
+  labels:
+    app: client
+
+#en espec definimos los contenedores que viviran dentro de este pod
+spec:
+  containers:
+    - name: client
+      image: laithharb/web-app:v1
