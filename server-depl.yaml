@@ -24,7 +24,7 @@ kind: Service
 metadata:
   name: server-srv
 spec:
-  type: NodePort
+  type: ClusterIP
   selector:
     app: server
   ports:
@@ -32,4 +32,4 @@ spec:
     - protocol: TCP
       port: 3000 # puerto donde levanta la app
       targetPort: 3000 # este es el port expuesto dentro del contenedor del pod(port donde levanta la app)
-      nodePort: 30005
+      # nodePort: 30005

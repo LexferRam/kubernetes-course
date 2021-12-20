@@ -103,3 +103,18 @@ A Kubernetes Deployment is used to tell Kubernetes how to create or modify insta
 
 ## Ingress Resource type
 
+Kubernetes Ingress is an API object that provides routing rules to manage external users' access to the services in a Kubernetes cluster, typically via HTTPS/HTTP. With Ingress, you can easily set up rules for routing traffic without creating a bunch of Load Balancers or exposing each service on the node.
+
+**NGINX Ingress** Controller is a best-in-class traffic management solution for cloud‑native apps in Kubernetes and containerized environments.
+
+Para habitar los distintos(segun su instalacion ) nginx ingress :
+
+<https://kubernetes.github.io/ingress-nginx/deploy/#microk8s>
+
+
+**NOTA**: para ver info del host ejecutar: code /etc/hosts
+proceso en windows:
+
+- cmd como admin 
+- moverse a C:\Windows\System32\Drivers\etc
+- ejecutar: notepad hosts
