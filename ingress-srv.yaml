@@ -2,9 +2,10 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: ingress-service
-  # annotations:
-  #   nginx.ingress.kubernetes.io/rewrite-target: /
-  # nginx.ingress.kubernetes.io/default-backend: client-srv
+  annotations:
+    # nginx.ingress.kubernetes.io/rewrite-target: /
+    # nginx.ingress.kubernetes.io/default-backend: client-srv
+    # nginx.ingress.kubernetes.io/server-alias: 'lexferramirez.com'
 spec:
   ingressClassName: nginx
   rules:
@@ -28,3 +29,14 @@ spec:
                 name: client-srv
                 port:
                   number: 3000
+#### CONFIGURACION PARA QUE lexferramirez.com:3000 lleve a lexferramirez.com
+
+## con nginx como proxy inverso.
+
+# server {
+#   listen       api.mydomain.com:80;
+#   server_name  api.mydomain.com;
+#   location / {
+#     proxy_pass http://127.0.0.1:8000;
+#   }
+# }

@@ -71,6 +71,7 @@ sudo snap alias microk8s.kubectl kubectl
 - kubectl delete [resorce-name(deployment e.i)] [name-resorce] (eliminar un recurso) ejemplo: kubectl delete service mongo-srv
 - kubectl delete all --all (elimina todo)
 - mkubectl apply -f . ==> (si se coloca . se aplica para todo los archivos yaml, si se quiere un archivo especifico se coloca el nombre en lugar del punto)
+- kubectl describe ingress (describe el ingress creado)
 
 **Maneras de crear y eliminar recursos**
 
@@ -111,6 +112,9 @@ Para habitar los distintos(segun su instalacion ) nginx ingress :
 
 <https://kubernetes.github.io/ingress-nginx/deploy/#microk8s>
 
+### Cómo configurar el DNS local usando el archivo/etc/hosts en Linux
+
+DNS (Sistema o servicio de nombres de dominio) es un sistema/servicio de nombres descentralizado jerárquico que traduce los nombres de dominio a direcciones IP en Internet o una red privada y un servidor que proporciona dicho servicio se denomina servidor DNS.
 
 **NOTA**: para ver info del host ejecutar: code /etc/hosts
 proceso en windows:
