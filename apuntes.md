@@ -97,6 +97,37 @@ En kubernets hay 4 tipos de servicios:
 Namespaces are a way to organize clusters into virtual sub-clusters — they can be helpful when different teams or projects share a Kubernetes cluster. Any number of namespaces are supported within a cluster, each logically separated from others but with the ability to communicate with each other.
 **NOTA:**Cuando no definimos un namespace especifico, estaremos haciendo referencia al "default namespace", para hacer referencia a un namespace especifico se debe usar el flag -n [namespace], ejemplo:
 **kubectl get all -n kube-system**
+**mkubectl get all --all-namespaces**
+**kubectl get ns**
+**kubectl delete ns developers**
+
+## Crear un namespace 
+
+Para crear un namespace, crea un fichero YAML como el siguiente:
+
+```yml
+apiVersion: v1
+kind: Namespace
+metadata:
+   name: developers
+```
+
+Para crear el namespace, ejecuta:
+
+```cmd
+ kubectl create -f ns-developers.yam
+```
+
+ver descripcion del namespace:
+
+```cmd
+kubectl describe ns developers
+```
+
+
+Los namespaces (espacios de nombres) en Kubernetes permiten establecer un nivel adicional de separación entre los contenedores que comparten los recursos de un clúster.
+
+Esto es especialmente útil cuando diferentes grupos de DevOps usan el mismo clúster y existe el riesgo potencial de colisión de nombres de los pods, etc usados por los diferentes equipos.
 
 ## Kubernets deployments
 
