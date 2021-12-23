@@ -6,30 +6,32 @@ metadata:
     # nginx.ingress.kubernetes.io/rewrite-target: /
     # nginx.ingress.kubernetes.io/default-backend: client-srv
     # nginx.ingress.kubernetes.io/server-alias: 'lexferramirez.com'
+    # kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/use-regex: 'true'
 spec:
-  ingressClassName: nginx
+  # ingressClassName: nginx
   rules:
-    - host: lexferramirez.com
+    - host: lexferramirez.api
       http:
         paths:
           - pathType: Prefix
-            path: /api/?(.*)
+            path: /api
             backend:
               service:
                 name: server-srv
                 port:
                   number: 3000
-    - host: lexferramirez.com
+    - host: lexferramirez
       http:
         paths:
-          - path: /?(.*)
-            pathType: Prefix
+          - pathType: Prefix
+            path: /*
             backend:
               service:
                 name: client-srv
                 port:
                   number: 3000
-#### CONFIGURACION PARA QUE lexferramirez.com:3000 lleve a lexferramirez.com
+### CONFIGURACION PARA QUE lexferramirez.com:3000 lleve a lexferramirez.com
 
 ## con nginx como proxy inverso.
 

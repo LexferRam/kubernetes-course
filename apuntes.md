@@ -153,3 +153,16 @@ proceso en windows:
 - cmd como admin 
 - moverse a C:\Windows\System32\Drivers\etc
 - ejecutar: notepad hosts
+
+
+### Obtener info de MicroK8s
+
+```cmd
+microk8s kubectl get nodes -o wide
+```
+
+### habilitar DNS
+
+```cmd
+microk8s enable dns
+```
