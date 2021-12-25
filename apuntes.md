@@ -143,6 +143,9 @@ Para habitar los distintos(segun su instalacion ) nginx ingress :
 
 <https://kubernetes.github.io/ingress-nginx/deploy/#microk8s>
 
+1. mkubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/nginx-0.30.0/deploy/static/mandatory.yaml
+2. microk8s enable ingress
+
 ### Cómo configurar el DNS local usando el archivo/etc/hosts en Linux
 
 DNS (Sistema o servicio de nombres de dominio) es un sistema/servicio de nombres descentralizado jerárquico que traduce los nombres de dominio a direcciones IP en Internet o una red privada y un servidor que proporciona dicho servicio se denomina servidor DNS.
@@ -153,6 +156,7 @@ proceso en windows:
 - cmd como admin 
 - moverse a C:\Windows\System32\Drivers\etc
 - ejecutar: notepad hosts
+- se debe ejecutar **kubectl describe ingress** para ver la ip que expone cada servicio y se debe modificar el archivo hosts colocando dicha IP seguido del dominio configurado en el ingress
 
 
 ### Obtener info de MicroK8s

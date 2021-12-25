@@ -4,41 +4,53 @@
 # apps/v1 => Deplloyment
 # which apiVersion should I use?/ buscar apiVersion para cierto recurso
 
-#kind: Pod # tipo de recurso queremos crear
+#####################################################################
+#####################################################################
+#####################################################################
+#kind: tipo de recurso queremos crear
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: client-depl
 spec:
-  replicas: 1
+  replicas: 2
   selector:
+    #matchLabels hace referencia al label del pod creado con el template
     matchLabels:
       app: client
+  #template es el pod que vamos a crear(siempre seran pods aqui)
   template:
     #metadata es el nombre del label que le damos al recurso
     metadata:
+      #name: nombre del pod que estamos creando
       name: client-pod
-      #labels nombre que le damos al pods para que otros recursos puedan interactuar con el(en este caso es el nombre del pod creado)
+      #labels nombre que le damos al pods para que otros recursos puedan interactuar con el
       labels:
         app: client
     #en espec definimos los contenedores que viviran dentro de este pod
     spec:
+      #containers: definimos los containers que viviran dentro del pod
       containers:
         - name: client
           image: laithharb/web-app:v2
-
+#####################################################################
+#####################################################################
+#####################################################################
+# Servicio que expone al pod creado anteriormente
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: client-srv
 spec:
-  type: ClusterIP #NodePort # En produccion es un LoadBalancer
-  #selector permite interactuar con uno de nuestros recursos, mediante el label definido en el pod
+  type: ClusterIP #NodePort # En produccion usar LoadBalancer
   selector:
+    #selector: hace referencia al label del pod creado(o cualquier otro recurso creado)
     app: client
   ports:
     - port: 3000
       targetPort: 3000 # este es el port expuesto dentro del contenedor del pod(port donde levanta la app)
-      # nodePort: 30007
-      # rango de nodePort 30000-32767
+
+
+      # nodePort: 30007 (puerto que se expone)
+      # rango de nodePort 30000-32767 (usado cuando el tipo de servicio es NodePort)

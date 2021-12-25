@@ -1,3 +1,7 @@
+#####################################################################
+#####################################################################
+#####################################################################
+#Creando el pod
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -16,7 +20,10 @@ spec: # Spec for deployment
       containers:
         - name: server
           image: laithharb/server:v1
-
+#####################################################################
+#####################################################################
+#####################################################################
+# Servicio que expone al pod creado anteriormente
 ---
 # misma configuracion que tenia server-srv.yaml
 apiVersion: v1
@@ -24,7 +31,7 @@ kind: Service
 metadata:
   name: server-srv
 spec:
-  type: ClusterIP
+  type: ClusterIP #NodePort
   selector:
     app: server
   ports:
@@ -32,4 +39,15 @@ spec:
     - protocol: TCP
       port: 3000 # puerto donde levanta la app
       targetPort: 3000 # este es el port expuesto dentro del contenedor del pod(port donde levanta la app)
-      # nodePort: 30005
+      # nodePort: 30005 #(solo si el servicio es del tipo NodePort)
+###################################################################
+###################################################################
+###################################################################
+###################################################################
+###################################################################
+# NOTA: para que el pod de server-srv pueda conectarse al pod de mongoDB mediante el servcio de ClusterIP, en la cadena de conxion de la app de node se debe especificar, en lugar de localhost, el servicio mongo-srv, el cual es el servicio que expone al pod de la BDs de mongoDB, ASI: mongoose.connect("mongodb://mongo-srv/habits")
+
+#para que funcione la referencia por nombre de servcio, kubernetes ejecuta un servicioi oculto(DNS service), el cual apunta a un pod que almacena un key(nombre-servicio):value(ip-service), ejemplo: mongo-srv:1.324.252.21.
+
+#para habilitar el DNS service en microk8s ejecutar: microk8s enable dns
+#este servicio pertenece al namespace kube-system:  mkubectl get services -n kube-system
