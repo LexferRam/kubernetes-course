@@ -7,7 +7,7 @@ kind: Deployment
 metadata:
   name: mongo-depl
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: mongo
