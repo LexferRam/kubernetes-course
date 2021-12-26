@@ -20,6 +20,20 @@ spec:
       containers:
         - name: mongo
           image: mongo
+          # resources:
+          # requests:
+          #   memory: 200Mi
+          #   cpu: 100m
+          # limits:
+          #   memory: 200Mi
+          #   cpu: 100m
+          volumeMounts:
+            - name: mongo-storage
+              mountPath: /data/db
+      volumes:
+        - name: mongo-storage
+          persistentVolumeClaim:
+            claimName: mongo-pvc
 #####################################################################
 #####################################################################
 #####################################################################

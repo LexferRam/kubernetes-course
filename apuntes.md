@@ -67,7 +67,7 @@ sudo snap alias microk8s.kubectl kubectl
 - kubectl get deployments (retorna todos los deployments)
 - kubectl get namespaces
 - kubectl describe [name-pod] (describe un pod especifico)
-- kubectl logs [name-pod] (debugg un pod)
+- kubectl logs [name-pod] (debugg un pod) --follow=true **ver stream de logs**
 - kubectl delete [resorce-name(deployment e.i)] [name-resorce] (eliminar un recurso) ejemplo: kubectl delete service mongo-srv
 - kubectl delete all --all (elimina todo)
 - mkubectl apply -f . ==> (si se coloca . se aplica para todo los archivos yaml, si se quiere un archivo especifico se coloca el nombre en lugar del punto)
