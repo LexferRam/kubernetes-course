@@ -28,11 +28,15 @@ spec:
           #   memory: 200Mi
           #   cpu: 100m
           volumeMounts:
+            #name del volume creado abajo
             - name: mongo-storage
+              #path donde se almacenara la info dentro del PV(depende de la BDs, en mongoDB es: /data/db )
               mountPath: /data/db
       volumes:
+        #nombre del volume
         - name: mongo-storage
           persistentVolumeClaim:
+            #name definido en metadata de mongo-pvc.yaml
             claimName: mongo-pvc
 #####################################################################
 #####################################################################

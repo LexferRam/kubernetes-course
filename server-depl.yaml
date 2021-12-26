@@ -7,7 +7,7 @@ kind: Deployment
 metadata:
   name: server-depl
 spec: # Spec for deployment
-  replicas: 3
+  replicas: 1
   selector: # hace match con el pod a replicar
     matchLabels:
       app: server

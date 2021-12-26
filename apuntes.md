@@ -170,3 +170,15 @@ microk8s kubectl get nodes -o wide
 ```cmd
 microk8s enable dns
 ```
+
+## Habilitar storage en MicroK8s para usar PV
+
+```cmd
+microk8s enable storage
+```
+
+## Eliminar pvc
+
+```cmd
+kubectl delete pvc <pvc-name>
+```
