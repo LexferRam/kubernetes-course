@@ -74,6 +74,7 @@ sudo snap alias microk8s.kubectl kubectl
 - kubectl describe ingress (describe el ingress creado)
 - kubectl get pv (obtiene los persistent volume)
 - kubectl get pvc (obtiene los persistence volume claim)
+- kubectl exec -it [nombre-pod] -- sh (explorar el contenedor de un pod)(usar ctrl+d para salir)
 
 **Maneras de crear y eliminar recursos**
 
@@ -183,4 +184,53 @@ microk8s enable storage
 
 ```cmd
 kubectl delete pvc <pvc-name>
+```
+
+
+# Resumen Curso Pelao Nerd
+
+* When you deploy kubernetes, you get a cluster
+* A  kubernetes cluster consistsof a set of worker machines, that runs containerized applications. Every cluster has at least one worker node 
+* the worker node(s) host the pods that are the components of the application workload.
+* the control plane manages the worker nodes and the pods in the cluster.A cluster usally runs multiple nodes, providingfault tolenrance and high availability.
+
+**StatefulSet**
+A Statefulset is a Kubernetes controller that is used to manage and maintain one or more Pods that uses volumes.(i.e DB pod)
+Deployment is more suited to work with stateless applications.
+
+```
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: my-csi-app-set
+spec:
+  selector:
+    matchLabels:
+      app: mypod
+  serviceName: "my-frontend"
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: mypod
+    spec:
+      containers:
+      - name: my-frontend
+        image: busybox
+        args:
+        - sleep
+        - infinity
+        volumeMounts:
+        - mountPath: "/data"
+          name: csi-pvc
+  volumeClaimTemplates:
+  - metadata:
+      name: csi-pvc
+    spec:
+      accessModes:
+      - ReadWriteOnce
+      resources:
+        requests:
+          storage: 5Gi
+      storageClassName: do-block-storage
 ```
