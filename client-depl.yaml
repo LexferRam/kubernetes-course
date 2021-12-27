@@ -33,6 +33,11 @@ spec:
       containers:
         - name: client
           image: laithharb/web-app:v2
+          # #v1 llama la conexion con la DB por env
+          # image: laithharb/web-app:v1
+          # env:
+          #   - name: MONGO_URL
+          #     value: mongodb://mongo-srv/habits
 #####################################################################
 #####################################################################
 #####################################################################

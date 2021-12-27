@@ -72,6 +72,8 @@ sudo snap alias microk8s.kubectl kubectl
 - kubectl delete all --all (elimina todo)
 - mkubectl apply -f . ==> (si se coloca . se aplica para todo los archivos yaml, si se quiere un archivo especifico se coloca el nombre en lugar del punto)
 - kubectl describe ingress (describe el ingress creado)
+- kubectl get pv (obtiene los persistent volume)
+- kubectl get pvc (obtiene los persistence volume claim)
 
 **Maneras de crear y eliminar recursos**
 
