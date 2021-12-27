@@ -20,6 +20,11 @@ spec: # Spec for deployment
       containers:
         - name: server
           image: laithharb/server:v2
+          resources:
+            #burstable pod
+            requests:
+              memory: 200Mi
+              cpu: 100m
           env:
             #usando el secret
             - name: MONGO_URL
