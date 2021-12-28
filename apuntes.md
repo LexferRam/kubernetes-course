@@ -120,6 +120,11 @@ Para crear el namespace, ejecuta:
 ```cmd
  kubectl create -f ns-developers.yam
 ```
+o simplemente ejecutar:
+
+```
+kubectl create namespace [nombre-namespace]
+```
 
 ver descripcion del namespace:
 
@@ -127,10 +132,23 @@ ver descripcion del namespace:
 kubectl describe ns developers
 ```
 
+**NOTA** para crear un componente en un namespace especifico en "metadata" se debe agregar:
+
+```
+metadata: 
+   name: client 
+   namespace: my-namespace
+``` 
+
 
 Los namespaces (espacios de nombres) en Kubernetes permiten establecer un nivel adicional de separación entre los contenedores que comparten los recursos de un clúster.
 
 Esto es especialmente útil cuando diferentes grupos de DevOps usan el mismo clúster y existe el riesgo potencial de colisión de nombres de los pods, etc usados por los diferentes equipos.
+
+**Casos de usos:** 
+1. Structure your componentes
+2. Avoid conflicts between teams
+3. Share services between different environments
 
 ## Kubernets deployments
 
@@ -197,6 +215,11 @@ kubectl delete pvc <pvc-name>
 **StatefulSet**
 A Statefulset is a Kubernetes controller that is used to manage and maintain one or more Pods that uses volumes.(i.e DB pod)
 Deployment is more suited to work with stateless applications.
+para crear un pod de una DBs se debe hacer con un Statefulset, de esta forma se puede crear replicas del pod manteniendo la consistencia de los datos de la DBs, ya que mantine la sincronia de las replicas de la DBs
+
+* **stateless applications** deployed using Deployment
+* **statefull applications** deployed using StatefulSet
+
 
 ```
 apiVersion: apps/v1
