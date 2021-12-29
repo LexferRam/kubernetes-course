@@ -75,6 +75,7 @@ sudo snap alias microk8s.kubectl kubectl
 - kubectl get pv (obtiene los persistent volume)
 - kubectl get pvc (obtiene los persistence volume claim)
 - kubectl exec -it [nombre-pod] -- sh (explorar el contenedor de un pod)(usar ctrl+d para salir)
+- mkubectl rollout restart deployment [nombre-deployment] ==> reinicia los pods de un deployment
 
 **Maneras de crear y eliminar recursos**
 
