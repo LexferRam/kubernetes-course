@@ -78,6 +78,7 @@ sudo snap alias microk8s.kubectl kubectl
 - mkubectl rollout restart deployment [nombre-deployment] ==> reinicia los pods de un deployment
 - mkubectl set image deployment/**[deployment-name]** **[container-name]**=**[dockerHub-name]**/**[image-name]**:**[image-tag]** -n **[namespace]** (set the image)
 - mkubectl scale --replicas=0 deployment/<your-deployment> ==> manera de detener todos los pods asociados a un delpoyment, si se quiere mas replica se establece --replicas=#de replicas
+- kubectl rollout undo deployment/[deploment-name]  ==> hace un rollback a deployment(image) anterior
 
 **Maneras de crear y eliminar recursos**
 
